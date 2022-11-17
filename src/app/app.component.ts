@@ -22,64 +22,64 @@ export class AppComponent implements OnInit {
    
   }
   ngOnInit(): void {
-    this.getAllCards();
+    // this.getAllCards();
    
   }
-  getAllCards(){
-    this.cardService.getAllCards()
-    .subscribe(
-      response =>{
-        this.cards=response;
+  // getAllCards(){
+  //   this.cardService.getAllCards()
+  //   .subscribe(
+  //     response =>{
+  //       this.cards=response;
       
-        // console.log(response);
-      }
-    )
-  }
-  OnSubmit(){
-    if(this.card.id ===''){
-      this.cardService.Post(this.card)
-      .subscribe(
-        response=>{
-          this.getAllCards();
-          this.card= {
-            id: '',
-            villainName: '',
-            franchise:'',
-            powers:'',
-            imageURL: ''
-          };
-        }
-      );
-    }
-    else {
-      this.updateCard(this.card);
-    }
+  //       // console.log(response);
+  //     }
+  //   )
+  // }
+  // OnSubmit(){
+  //   if(this.card.id ===''){
+  //     this.cardService.Post(this.card)
+  //     .subscribe(
+  //       response=>{
+  //         this.getAllCards();
+  //         this.card= {
+  //           id: '',
+  //           villainName: '',
+  //           franchise:'',
+  //           powers:'',
+  //           imageURL: ''
+  //         };
+  //       }
+  //     );
+  //   }
+  //   else {
+  //     this.updateCard(this.card);
+  //   }
 
     
-//  console.log(this.card);
-  }
-  deleteCard(id: string){
-    this.cardService.deleteCard(id)
-    .subscribe(
-      response=>{
-        this.getAllCards();
-      }
-    )
 
-  }
-  populateForm(card:Card){
-    this.card = card;
+  // }
+  // deleteCard(id: string){
+  //   this.cardService.deleteCard(id)
+  //   .subscribe(
+  //     response=>{
+  //       this.getAllCards();
+  //     }
+  //   )
 
-  }
-  updateCard(card: Card){
-    console.log(card)
-    this.cardService.updateCard(card)
+  // }
+  // populateForm(card:Card){
+  //   this.card = card;
+
+  // }
+  // updateCard(card: Card){
+  //   console.log(card)
+  //   this.cardService.updateCard(card)
     
-    .subscribe(
-      response =>{
-        // console.log(response)
-        this.getAllCards();
-      }
-    )
-  }
+  //   .subscribe(
+  //     response =>{
+  //       // console.log(response)
+  //       this.getAllCards();
+  //     }
+  //   )
+  // }
 }

@@ -4,4 +4,5 @@ export interface Card{
     franchise:string;
     powers:string;
     imageURL:string;
+   
 }
