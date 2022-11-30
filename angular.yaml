@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: angular
+  name: angular
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: angular
+    spec:
+      terminationGracePeriodSeconds: 31
+      containers:
+      - image: docker.io/01521433811/angular-project-api:TAG_NUMBER
+        name: angular-frontend
+        ports:
+        - containerPort: 80
+        resources: {}      
+      nodeSelector:
+        env: dev
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimeStamp: null
+  labels:
+    app: angular
+  name: angular
+spec:
+  type: LoadBalancer
+  selector:
+    app: angular
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30503
+status:
+  loadBalancer: {}
