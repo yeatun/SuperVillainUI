@@ -19,7 +19,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 31
       containers:
-      - image: docker.io/01521433811/sv-angular:TAG_NUMBER
+      - image: docker.io/01521433811/frontend-project:TAG_NUMBER
         name: angular-frontend
         ports:
         - containerPort: 80
