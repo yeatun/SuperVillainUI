@@ -1,11 +1,12 @@
 export interface User{
-    id:number;
-    firstName:string;
-    lastName:string;
-    username:string;
-    password:string;
-    token:string;
-    role:string;
+    fullName :string;
+    userName:string;
     email:string;
-    message:string
+    password:string;
+    confirmationPassword: string;
+    token:string;
+    roles:string;
+    message: string;
+    
+   
 }

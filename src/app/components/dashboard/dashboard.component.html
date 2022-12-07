@@ -1,9 +1,9 @@
-
-
+<button (click)="logOut()" class="btn btn-danger ">Logout</button>
 <div class="container">
   <h1>Angular + ASP.net Core Crud</h1>
   <div class="card-container">
     <div class="cards-form">
+      <br>
       <form #form="ngForm" (ngSubmit)="OnSubmit()">
         <div class="form-group">
           <label for="">SuperVillain Name</label>
@@ -25,7 +25,7 @@
           <button type="submit">Save</button>
         </div>
       </form>
-
+<br>
     </div>
     <div class="cards-grid">
       <div class="card-row" *ngFor="let card of cards">

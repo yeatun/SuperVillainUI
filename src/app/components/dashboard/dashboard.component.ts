@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
+import { AuthService } from 'src/app/service/auth.service';
 import { CardsService } from 'src/app/service/cards.service';
 // import { Card } from './models/card.model';
 // import { CardsService } from './service/cards.service';
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
     imageURL: ''
   }
 
-  constructor(private cardService:CardsService){
+  constructor(private cardService:CardsService, private auth: AuthService){
    
   }
   ngOnInit(): void {
@@ -32,7 +33,9 @@ export class DashboardComponent implements OnInit {
     
     .subscribe(
       response =>{
-        this.cards=response.items;
+        
+        console.log(response);
+        this.cards=response;
       
         
       }
@@ -40,6 +43,7 @@ export class DashboardComponent implements OnInit {
     )
   }
   OnSubmit(){
+    console.log(this.card);
     if(this.card.id ===''){
       this.cardService.Post(this.card)
       .subscribe(
@@ -85,5 +89,9 @@ export class DashboardComponent implements OnInit {
         this.getAllCards();
       }
     )
+  }
+
+  logOut(){
+    this.auth.signOut();
   }
 }

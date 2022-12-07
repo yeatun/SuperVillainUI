@@ -8,23 +8,23 @@ import { List } from '../models/object.model';
   providedIn: 'root'
 })
 export class CardsService {
-  baseUrl ='https://localhost:7135/api/SuperVillain';
+  baseUrl ='https://localhost:7135/api/SuperVillain/';
 
   constructor(private http:HttpClient) { }
 
   //Get all cards
-  getAllCards(): Observable<List>{
-    return this.http.get<List>(this.baseUrl);
+  getAllCards(): Observable<Card[]>{
+    return this.http.get<Card[]>(`${this.baseUrl}GetAll`);
 
   }
   Post(card: Card): Observable<Card> {
     card.id ='0';
-   return this.http.post<Card>(this.baseUrl, card);
+   return this.http.post<Card>(`${this.baseUrl}Create`, card);
   }
   deleteCard(id:string): Observable<Card>{
-   return this.http.delete<Card>(this.baseUrl+ '/'+ id);
+   return this.http.delete<Card>(`${this.baseUrl}Delete`+ '/'+ id);
   }
   updateCard(card: Card): Observable<Card> {
-    return this.http.put<Card>(this.baseUrl+ '/' + card.id,card);
+    return this.http.put<Card>(`${this.baseUrl}Edit`+ '/' + card.id,card);
   }
 }
