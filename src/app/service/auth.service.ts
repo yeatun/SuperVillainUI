@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Login } from '../models/login.model';
+
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -14,8 +14,9 @@ export class AuthService {
   constructor(private http : HttpClient,private router: Router) { }
 
   signUp(user:User): Observable<User>{
-    user.token="123eee";
-    user.roles=""
+    // user.token="123eee";
+    // user.roles=""
+    user.roles=['Admin']
     return this.http.post<User>(`${this.baseUrl}User/Create`,user)
   }
   login(loginObj:User){

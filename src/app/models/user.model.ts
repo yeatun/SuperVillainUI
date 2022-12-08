@@ -4,9 +4,9 @@ export interface User{
     email:string;
     password:string;
     confirmationPassword: string;
-    token:string;
-    roles:string;
-    message: string;
+    // token:string;
+    roles:string[];
+    // message: string;
     
    
 }
