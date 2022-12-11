@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
-           alert(res.message)
+          //  alert(res.message)
 
            console.log('reset',this.loginForm.reset());
           this.loginForm.reset();
