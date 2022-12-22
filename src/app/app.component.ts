@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from './models/card.model';
+import { AuthService } from './service/auth.service';
 import { CardsService } from './service/cards.service';
 
 @Component({
@@ -18,13 +19,14 @@ export class AppComponent implements OnInit {
     imageURL: ''
   }
 
-  constructor(private cardService:CardsService){
+  constructor(private cardService:CardsService, private auth: AuthService){
    
   }
   ngOnInit(): void {
     // this.getAllCards();
    
   }
+ 
   // getAllCards(){
   //   this.cardService.getAllCards()
   //   .subscribe(
