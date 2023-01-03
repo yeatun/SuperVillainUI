@@ -14,13 +14,13 @@ import { CardsService } from 'src/app/service/cards.service';
 export class DashboardComponent implements OnInit {
   title = 'first-angular-project';
   cards: Card[] =[];
-  card: Card ={
-    id: '',
-    villainName: '',
-    franchise:'',
-    powers:'',
-    imageURL: ''
-  }
+  // card: Card ={
+  //   id: '',
+  //   villainName: '',
+  //   franchise:'',
+  //   powers:'',
+  //   imageURL: ''
+  // }
 
   constructor(private cardService:CardsService, private auth: AuthService,private router:Router,){
    
@@ -77,10 +77,10 @@ export class DashboardComponent implements OnInit {
     )
 
   }
-  populateForm(card:Card){
-    this.card = card;
+  // populateForm(card:Card){
+  //   this.card = card;
 
-  }
+  // }
   // updateCard(card: Card){
   //   console.log(card)
   //   this.cardService.updateCard(card)

@@ -18,6 +18,7 @@ export class AddComponent {
     powers:'',
     imageURL: ''
   }
+  
   constructor(private fb: FormBuilder,private cardService:CardsService, private auth: AuthService,private router:Router){
    
   }
