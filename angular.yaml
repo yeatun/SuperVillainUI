@@ -5,6 +5,7 @@ metadata:
   labels:
     app: angular
   name: angular
+  namespace: devops-test
 spec:
   replicas: 1
   selector:
@@ -18,23 +19,39 @@ spec:
         app: angular
     spec:
       terminationGracePeriodSeconds: 31
+      volumes:
+      - name: secret-volume
+        secret:
+          defaultMode: 420
+          secretName: secret-nginx
+      - name: configmap-volume
+        configMap:
+          defaultMode: 420
+          name: nginx
       containers:
       - image: docker.io/01521433811/frontend-project:TAG_NUMBER
         name: angular-frontend
         ports:
         - containerPort: 80
-        resources: {}      
-      nodeSelector:
-        env: dev
+        - containerPort: 443
+        resources: {}
+        volumeMounts:
+        - mountPath: /etc/nginx/pabel
+          name: secret-volume
+        - mountPath: /etc/nginx/conf.d
+          name: configmap-volume
+
 status: {}
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimeStamp: null
+  creationTimestamp: null
   labels:
     app: angular
   name: angular
+  namespace: devops-test
 spec:
   type: LoadBalancer
   selector:
@@ -44,5 +61,11 @@ spec:
     port: 80
     targetPort: 80
     nodePort: 30504
+    name: http
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 443
+    nodePort: 30343
 status:
   loadBalancer: {}
